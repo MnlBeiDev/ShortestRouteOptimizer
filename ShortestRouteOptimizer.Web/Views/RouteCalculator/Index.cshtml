@@ -1,0 +1,26 @@
+﻿@model  ShortestRouteOptimizer.Web.ViewModels.RouteInputViewModel
+
+@using (Html.BeginForm("CalculateRouteDistance", "RouteCalculator", FormMethod.Post))
+{
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.ValidationMessageFor(m => m.From, "", new { @class = "text-danger" })
+    <br />
+    @Html.ValidationMessageFor(m => m.To, "", new { @class = "text-danger" })
+
+    <div class="col-md-10">
+
+        @Html.LabelFor(m => m.From)
+        @Html.TextBoxFor(m => m.From)
+
+        @Html.LabelFor(m => m.To)
+        @Html.TextBoxFor(m => m.To)
+
+        <input type="submit" value="Calculate" />
+    </div>
+
+}
+<br />
+<div>
+    <p>Path: @Model.ResultPath</p>
+    <p>Total Distance: @Model.TotalDistance</p>
+</div>
